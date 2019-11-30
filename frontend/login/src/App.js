@@ -1,7 +1,6 @@
 import React from 'react';
 import 'antd/dist/antd.css';
 import CLayout from './containers/Layout';
-import DocsList from './containers/DocsListView';
 import BaseRouter from './routes';
 import { BrowserRouter as Router } from 'react-router-dom'; 
 

@@ -1,7 +1,7 @@
 import React from 'react'; 
-import Docs from '../components/Docs';
 import axios from 'axios'; 
 import { Card } from 'antd'; 
+import CForm from '../components/Form';
 
 
 class DocsDetail extends React.Component {
@@ -22,11 +22,14 @@ class DocsDetail extends React.Component {
       
       render () {
         return (
+          <div>
            <Card title={this.state.doc.title}>
                <p>
                    {this.state.article.content}
                </p>
            </Card>
+           <CForm requestType='post' docsID={this.props.match.params.docsID} btnText="Update" />
+           </div> 
         )
     }
 }

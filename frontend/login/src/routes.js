@@ -2,7 +2,7 @@ import React from 'react';
 import { Route } from 'react-router-dom';
 import DocsList from './containers/DocsListView';
 import DocsDetail from './containers/DocsDetailView';
-import DocsDetail from './containers/DocsDetailView';
+
 
 
 const BaseRouter = () => (
