@@ -1,4 +1,5 @@
 import * as types from '../actions/types';
+import axios from 'axios'; 
 
 export const authBegin = () => {
     return {
@@ -39,8 +40,8 @@ export const checkAuthTime = expirationTime => {
 }
 
 export const authLogin = (username, password) => {
-    return disbatch => {
-        disbatch(authBegin()); 
+    return dispatch => {
+        dispatch(authBegin()); 
         axios.post('http://127.0.0.1:8000/rest-auth/login/', {
             username: username,
             password: password, 
@@ -54,14 +55,14 @@ export const authLogin = (username, password) => {
             dispatch(checkAuthTime(3600));
         })
         .catch(err => {
-            disptach(authFail(err))
+            dispatch(authFail(err))
         })
     }
 }
 
 export const signUp = (username, email, password1, password2) => {
-    return disbatch => {
-        disbatch(authBegin()); 
+    return dispatch => {
+        dispatch(authBegin()); 
         axios.post('http://127.0.0.1:8000/rest-auth/registration/', {
             username: username,
             email: email,
@@ -77,7 +78,25 @@ export const signUp = (username, email, password1, password2) => {
             dispatch(checkAuthTime(3600));
         })
         .catch(err => {
-            disptach(authFail(err))
+            dispatch(authFail(err))
         })
+    }
+}
+
+
+export const authCheckState = () => {
+    return dispatch => {
+        const token = localStorage.getItem('token');
+        if (token === undefined) {
+            dispatch(logout()); 
+        } else {
+             const expiration = new Date(localStorage.getItem('expiration'));
+             if (expiration <= new Date() ) {
+                 dispatch(logout());
+             } else {
+                 dispatch(authSucc(token));
+                 dispatch(checkAuthTime(expiration.getTime() - new Date().getTime() ) / 1000)
+             }
+        }
     }
 }
