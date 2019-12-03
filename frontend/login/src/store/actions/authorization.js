@@ -53,5 +53,31 @@ export const authLogin = (username, password) => {
             dispatch(authSucc(token));
             dispatch(checkAuthTime(3600));
         })
+        .catch(err => {
+            disptach(authFail(err))
+        })
+    }
+}
+
+export const signUp = (username, email, password1, password2) => {
+    return disbatch => {
+        disbatch(authBegin()); 
+        axios.post('http://127.0.0.1:8000/rest-auth/registration/', {
+            username: username,
+            email: email,
+            password1: password1,
+            password2: password2 
+        })
+        .then(res => {
+            const token = res.data.key;
+            const expiration = new Date (new Date().getTime() + 3600 * 1000)
+            localStorage.setItem('token', token);
+            localStorage.setItem('expiration', expiration);
+            dispatch(authSucc(token));
+            dispatch(checkAuthTime(3600));
+        })
+        .catch(err => {
+            disptach(authFail(err))
+        })
     }
 }
