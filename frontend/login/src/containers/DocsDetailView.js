@@ -25,7 +25,7 @@ class DocsDetail extends React.Component {
           <div>
            <Card title={this.state.doc.title}>
                <p>
-                   {this.state.article.content}
+                   {this.state.doc.content}
                </p>
            </Card>
            <CForm requestType='post' docsID={this.props.match.params.docsID} btnText="Update" />
