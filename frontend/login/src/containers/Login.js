@@ -2,6 +2,7 @@ import React, { Component }  from 'react';
 import { connect } from 'react-redux';
 import { Form, Icon, Input, Button, Spin } from 'antd';
 import { NavLink } from 'react-router-dom';
+import { Link } from 'react'; 
 
 const antIcon = <Icon type="loading" spin />
 
@@ -63,7 +64,7 @@ class NormalLoginForm extends React.Component {
                 Login
             </Button>
             or 
-            <NavLink>
+            <NavLink to="/signup/">
                 signup
             </NavLink>
         </Form.Item>
@@ -84,3 +85,4 @@ const mapStatetoProps = (state) => {
 }
 
 export default connect(mapStatetoProps)(WrappedNormalLoginForm);
+
