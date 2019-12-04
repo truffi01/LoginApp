@@ -31,7 +31,7 @@ export const logout = () => {
 
 //based on how the backend is set up for paramters 
 
-export const checkAuthTime = expirationTime => {
+export const checkAuthTime = (expirationTime) => {
     return dispatch => {
         setTimeout(() => {
             dispatch(logout());
