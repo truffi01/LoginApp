@@ -19,7 +19,7 @@ import {
       this.props.form.validateFieldsAndScroll((err, values) => {
         if (!err) {
           console.log('Received values of form: ', values);
-          this.props.onAuth(values.userName,
+          this.props.onAuth(values.username,
           values.email,
           values.password,
           values.confirm);
