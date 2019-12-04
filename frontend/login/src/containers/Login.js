@@ -1,9 +1,9 @@
 import React, { Component }  from 'react';
 import { connect } from 'react-redux';
-import { Form, Icon, Input, Button, Spin, Icon } from 'antd';
+import { Form, Icon, Input, Button, Spin } from 'antd';
 import { NavLink } from 'react-router-dom';
 
-
+const antIcon = <Icon type="loading" spin />
 
 
 class NormalLoginForm extends React.Component {
