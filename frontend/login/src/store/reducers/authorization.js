@@ -4,14 +4,14 @@ import { updateObject } from '../utl';
 const initialS = {
     token: null, 
     error: null,
-    loading: false, 
+    loading: false 
 }
 
 const authStart = (state, action) => {
     return updateObject(state, {
         error: null,
         loading: true
-    })
+    });
 }
 
 const authSucc = (state, action) => {
@@ -19,7 +19,7 @@ const authSucc = (state, action) => {
         token: action.token, 
         error: null, 
         loading: false
-    })
+    });
 }
 
 const authFail = (state, action) => {

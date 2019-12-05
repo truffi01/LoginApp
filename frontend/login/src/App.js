@@ -24,7 +24,7 @@ render () {
 }
 }
 
-const mapState = state => {
+const mapStatetoProps = state => {
   return {
     isAuthenticated: state.token !== null
   }
@@ -32,9 +32,9 @@ const mapState = state => {
 
 const mapDispatchtoProps = dispatch => {
   return {
-    onTryAutoSignUp: () => dispatch(actions.authCheckState)
+    onTryAutoSignUp: () => dispatch(actions.authCheckState())
   }
 }
 
 
-export default connect(mapState, mapDispatchtoProps)(App);
+export default connect(mapStatetoProps, mapDispatchtoProps)(App);
