@@ -17,10 +17,12 @@ class NormalLoginForm extends React.Component {
       if (!err) {
         console.log('Received values of form: ', values);
         this.props.onAuth(values.userName, values.password);
-        this.props.history.push("/");
+        
 
       }
     });
+        this.props.history.push("/");
+
   };
 
   render() {

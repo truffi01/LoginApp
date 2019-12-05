@@ -19,13 +19,13 @@ import {
       this.props.form.validateFieldsAndScroll((err, values) => {
         if (!err) {
           console.log('Received values of form: ', values);
-          this.props.onAuth(values.username,
+          this.props.onAuth(values.userName,
           values.email,
           values.password,
           values.confirm);
-          this.props.history.push("/");
         }
-      });
+        this.props.history.push("/");
+      });   
     };
   
     handleConfirmBlur = e => {
@@ -141,7 +141,7 @@ const mapStatetoProps = (state) => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    onAuth: (username, email,  password1, password2) => dispatch(actions.signUp(username, email, password1, password2))
+    onAuth: (username, email,  password1, password2) => dispatch(actions.signUp(username, email,password1,password2 ))
   }
 }
   

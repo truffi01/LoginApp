@@ -28,21 +28,24 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'allauth',
     'allauth.account', 
-    
+    'allauth.socialaccount',
+    'corsheaders',
+    'rest_auth',
     'rest_auth.registration',
     'rest_framework',
     'rest_framework.authtoken',
-    'rest_auth',
-    'corsheaders', 
+    
+     
     'docs',
 ]
 
 SITE_ID = 1 
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-    'corsheaders.middleware.CorsMiddleware',
+    
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -125,15 +128,10 @@ REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': (
         'rest_framework.permissions.AllowAny',
     ),
-    'DEFAULT_AUTHENTICATION_CLASSES': (
-        'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
-        'rest_framework.authentication.SessionAuthentication',
-        'rest_framework.authentication.BasicAuthentication',
-    ),
 }
 
 CORS_ORIGIN_ALLOW_ALL = True
-ACCOUNT_EMAIL_VERIFICATION = None 
+ACCOUNT_EMAIL_VERIFICATION = 'none'  
 ACCOUNT_AUTHENTICATION_METHOD = 'username' 
 ACCOUNT_EMAIL_REQUIRED = False 
 CORS_ALLOW_CREDENTIALS = True
