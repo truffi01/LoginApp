@@ -2,7 +2,7 @@ import { Layout, Menu, Breadcrumb } from 'antd';
 import React from 'react'; 
 import * as actions from '../store/actions/authorization'; 
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom'; 
+import { Link, withRouter } from 'react-router-dom'; 
 const { Header, Content, Footer } = Layout;
 
 class CLayout extends React.Component {
@@ -59,6 +59,6 @@ const mapDispatchToProps = dispatch => {
   }
 }
   
-export default connect(null, mapDispatchToProps)(CLayout);
+export default withRouter(connect(null, mapDispatchToProps)(CLayout));
 
  
